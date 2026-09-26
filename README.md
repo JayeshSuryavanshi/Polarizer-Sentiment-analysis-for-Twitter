@@ -1,4 +1,4 @@
-# Polarizer — Sentiment Analysis for Twitter
+# Polarizer: Sentiment Analysis for Twitter
 
 Polarizer is a small Python tool that fetches recent tweets matching a search
 query, cleans them, and classifies each tweet's sentiment as **positive**,
@@ -12,21 +12,21 @@ tweets and [TextBlob](https://textblob.readthedocs.io/) for sentiment scoring.
 
 The logic lives in `twitter.py` in a single `TwitterClient` class:
 
-1. **Authentication** — On construction, `TwitterClient` creates a Tweepy
+1. **Authentication**: On construction, `TwitterClient` creates a Tweepy
    `OAuthHandler` with your Twitter consumer key/secret and access
    token/secret, then builds a `tweepy.API` object used to fetch tweets.
-2. **Fetching tweets** — `get_tweets(query, count)` calls the Twitter search
+2. **Fetching tweets**: `get_tweets(query, count)` calls the Twitter search
    API for tweets matching `query` and parses each result into a dictionary
    holding the tweet text and its sentiment. Retweets are de-duplicated so the
    same parsed tweet is not counted twice.
-3. **Cleaning** — `clean_tweet(tweet)` strips mentions, URLs, the `RT` marker,
+3. **Cleaning**: `clean_tweet(tweet)` strips mentions, URLs, the `RT` marker,
    and non-alphanumeric characters using a regular expression.
-4. **Sentiment scoring** — `get_tweet_sentiment(tweet)` builds a `TextBlob`
+4. **Sentiment scoring**: `get_tweet_sentiment(tweet)` builds a `TextBlob`
    from the cleaned text and uses its polarity:
    - polarity `> 0` → `positive`
    - polarity `== 0` → `neutral`
    - polarity `< 0` → `negative`
-5. **Output** — `main()` fetches tweets for a query, computes the percentage of
+5. **Output**: `main()` fetches tweets for a query, computes the percentage of
    positive and negative tweets, and prints up to 10 example tweets from each
    category.
 
@@ -39,7 +39,7 @@ The logic lives in `twitter.py` in a single `TwitterClient` class:
   - Access token
   - Access token secret
 
-> **Important — credentials handling**
+> **Important: credentials handling**
 >
 > The current `twitter.py` contains placeholder credentials assigned directly
 > in the source. **Do not commit real Twitter API keys or tokens to source
@@ -59,8 +59,8 @@ The logic lives in `twitter.py` in a single `TwitterClient` class:
 
 ## Dependencies
 
-- [`tweepy`](https://pypi.org/project/tweepy/) — Twitter API client
-- [`textblob`](https://pypi.org/project/textblob/) — sentiment analysis
+- [`tweepy`](https://pypi.org/project/tweepy/): Twitter API client
+- [`textblob`](https://pypi.org/project/textblob/): sentiment analysis
 
 Install them with:
 
